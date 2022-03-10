@@ -1,0 +1,30 @@
+<div class="d-grid col">
+    <button type="button" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#login">Σύνδεση</button>
+    <!-- Modal -->
+    <div class="modal fade" id="login" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-block">
+                    <h2 class="modal-title text-center">Έμπα μέσα!</h2>
+                </div>
+                <div class="modal-body">
+                    <!-- Form -->
+                    <form action="/login" method="post" autocomplete="off" id="loginForm" class="needs-validation"
+                        novalidate>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="loginEmail" autofocus required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Κωδικός</label>
+                            <input type="password" name="password" class="form-control" id="loginPassword" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary w-100" form="loginForm">Σύνδεση</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

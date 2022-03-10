@@ -1,0 +1,28 @@
+<div class="d-grid col">
+    <button type="button" class="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#register">Εγγραφή</button>
+    <div class="modal fade" id="register" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-block">
+                    <h2 class="modal-title text-center">Γίνε μέλος!</h2>
+                </div>
+                <div class="modal-body">
+                    <!-- Form -->
+                    <form action="/register" method="post" autocomplete="off" id="registerForm" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="registerEmail" autofocus required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Κωδικός</label>
+                            <input type="password" name="password" class="form-control" id="registerPassword" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary w-100" form="registerForm">Εγγραφή</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

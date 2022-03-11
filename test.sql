@@ -5,6 +5,7 @@
 
 -- CREATE TABLE festivals (id INTEGER, name TEXT NOT NULL, location TEXT NOT NULL, date TEXT NOT NULL, PRIMARY KEY(id));
 -- DROP TABLE festivals;
--- INSERT INTO festivals (name, location, date) VALUES ("Μπουρανί", "Τύρναβος", "Καθαρά Δευτέρα")
+-- INSERT INTO festivals (name, location, date) VALUES ("Το σπάσιμο της στάμνας", "Κεφαλονιά", "Μεγάλο Σάββατο")
+-- DELETE FROM festivals WHERE id=3;
 
 

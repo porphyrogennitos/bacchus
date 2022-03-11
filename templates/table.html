@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover table-bordered border-primary">
+<table class="table table-striped table-hover table-bordered">
     <thead class="text-center">
         <tr>
             <th scope="col">Γιορτή</th>
@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         {% for festival in festivals %}
-        <tr>
+        <tr role="button">
             <td>{{ festival.name }}</td>
             <td>{{ festival.location }}</td>
             <td>{{ festival.date }}</td>

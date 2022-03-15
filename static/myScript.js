@@ -29,16 +29,14 @@
 //   }
 // });
 
+// const rows = document.querySelectorAll('tbody > tr');
 
-const rows = document.querySelectorAll('tbody > tr');
-
-for (const row of rows) {
-  row.addEventListener('click', function handleClick() {
-    if (row.classList.contains('bg-success')) {
-      row.classList.remove('bg-success');
-    } else {
-      row.classList.add('bg-success');
-    }
-  });
-}
-
+// for (const row of rows) {
+//   row.addEventListener('click', function handleClick() {
+//     if (row.classList.contains('bg-success')) {
+//       row.classList.remove('bg-success');
+//     } else {
+//       row.classList.add('bg-success');
+//     }
+//   });
+// }

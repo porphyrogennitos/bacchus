@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         {% for festival in festivals %}
-        <tr role="button">
+        <tr role="button" id="{{ festival.id }}" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <td>{{ festival.name }}</td>
             <td>{{ festival.location }}</td>
             <td>{{ festival.date }}</td>

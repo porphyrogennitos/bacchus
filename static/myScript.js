@@ -1,3 +1,5 @@
+// const bootstrap = require("bootstrap")
+
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
   'use strict'
@@ -18,6 +20,15 @@
       }, false)
     })
 })()
+
+// let rows = document.querySelectorAll("tbody > tr");
+
+// for (const row of rows) {
+//   row.addEventListener("click", function() {
+//     console.log("Yes.");
+//   });
+// }
+
 
 // document.addEventListener('click', function handleClick(event) {
 //   // console.log('user clicked: ', event.target);

@@ -32,15 +32,25 @@ Session(app)
 db = SQL("sqlite:///bacchus.db")
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
     """Show festivals"""
 
-    # Get festivals table
-    festivals = db.execute("SELECT * FROM festivals")
+    if request.method == "POST":
+        name = request.form.get("name")
+        location = request.form.get("location")
+        date = request.form.get("date")
 
-    return render_template("index.html", festivals=festivals)
+        db.execute("INSERT INTO festivals (user_id, name, location, date) VALUES (?, ?, ?, ?)", session["user_id"], name, location, date)
+
+        return redirect("/")
+    else:
+
+        # Get festivals table
+        festivals = db.execute("SELECT * FROM festivals WHERE user_id = ?", session["user_id"])
+
+        return render_template("index.html", festivals=festivals)
 
 
 @app.route("/header")

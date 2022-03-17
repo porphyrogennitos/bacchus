@@ -1,5 +1,7 @@
 <div class="d-grid col">
     <button type="button" class="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#register">Εγγραφή</button>
+
+    <!-- Modal -->
     <div class="modal fade" id="register" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -8,7 +10,8 @@
                 </div>
                 <div class="modal-body">
                     <!-- Form -->
-                    <form action="/register" method="post" autocomplete="off" id="registerForm" class="needs-validation" novalidate>
+                    <form action="/register" method="post" autocomplete="off" id="registerForm" class="needs-validation"
+                        novalidate>
                         <div class="mb-3">
                             <label for="registerEmail" class="form-label">Email</label>
                             <input type="email" name="email" class="form-control" id="registerEmail" autofocus required>

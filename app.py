@@ -42,12 +42,25 @@ def index():
         location = request.form.get("location")
         date = request.form.get("date")
 
+        # if name empty 
+        if not name:
+            return apology("Πρέπει να συμπληρώσεις το όνομα του πανηγυριού!")
+
+        # if location empty
+        if not location:
+            return apology("Πρέπει να συμπληρώσεις την τοποθεσία του πανηγυριού!")
+
+        # check if festival's name already exists
+        rows = db.execute("SELECT * FROM festivals WHERE name = ?", name)
+        if len(rows) == 1:
+            return apology("Το πανηγύρι υπάρχει ήδη!", 400)
+
         db.execute("INSERT INTO festivals (user_id, name, location, date) VALUES (?, ?, ?, ?)", session["user_id"], name, location, date)
 
         return redirect("/")
     else:
 
-        # Get festivals table
+        # Get festival's table
         festivals = db.execute("SELECT * FROM festivals WHERE user_id = ?", session["user_id"])
 
         return render_template("index.html", festivals=festivals)

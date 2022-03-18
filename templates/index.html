@@ -9,16 +9,16 @@ Index
     {% include "table.html" %}
 
     <div class="text-center">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add">Πρόσθεσε
-            πανηγύρι</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add">Πρόσθεσε</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">Αφαίρεσε</button>
     </div>
 
-    <!-- Modal -->
+    <!-- "Add" modal -->
     <div class="modal fade" id="add" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form action="/" method="post" autocomplete="off">
+                    <form action="/add" method="post" autocomplete="off">
                         <div class="mb-3">
                             <label for="name" class="form-label">Όνομα</label>
                             <input type="text" name="name" class="form-control" id="name" required>
@@ -32,7 +32,25 @@ Index
                             <input type="date" name="date" class="form-control" id="date">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Στείλε</button>
+                        <button type="submit" class="btn btn-success">Πρόσθεσε</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- "Delete" modal -->
+    <div class="modal fade" id="delete" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form action="/delete" method="post" autocomplete="off">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Όνομα</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger">Διάγραψε</button>
                     </form>
                 </div>
             </div>

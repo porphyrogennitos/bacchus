@@ -1,3 +1,4 @@
+from crypt import methods
 import os
 
 from cs50 import SQL
@@ -32,46 +33,75 @@ Session(app)
 db = SQL("sqlite:///bacchus.db")
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 @login_required
 def index():
     """Show festivals"""
 
-    if request.method == "POST":
-        name = request.form.get("name")
-        location = request.form.get("location")
-        date = request.form.get("date")
+    # Get festival's table
+    festivals = db.execute(
+        "SELECT * FROM festivals WHERE user_id = ?", session["user_id"])
 
-        # if name empty 
-        if not name:
-            return apology("Πρέπει να συμπληρώσεις το όνομα του πανηγυριού!")
-
-        # if location empty
-        if not location:
-            return apology("Πρέπει να συμπληρώσεις την τοποθεσία του πανηγυριού!")
-
-        # check if festival's name already exists
-        rows = db.execute("SELECT * FROM festivals WHERE name = ?", name)
-        if len(rows) == 1:
-            return apology("Το πανηγύρι υπάρχει ήδη!", 400)
-
-        db.execute("INSERT INTO festivals (user_id, name, location, date) VALUES (?, ?, ?, ?)", session["user_id"], name, location, date)
-
-        return redirect("/")
-    else:
-
-        # Get festival's table
-        festivals = db.execute("SELECT * FROM festivals WHERE user_id = ?", session["user_id"])
-
-        return render_template("index.html", festivals=festivals)
+    return render_template("index.html", festivals=festivals)
 
 
-@app.route("/header")
+@app.route("/add", methods=["POST"])
+@login_required
+def add():
+    """Add a festival."""
+
+    name = request.form.get("name")
+    location = request.form.get("location")
+    date = request.form.get("date")
+
+    # If name empty
+    if not name:
+        return apology("Πρέπει να συμπληρώσεις το όνομα!")
+
+    # If location empty
+    if not location:
+        return apology("Πρέπει να συμπληρώσεις την τοποθεσία!")
+
+    # Check if festival's name already exists
+    rows = db.execute(
+        "SELECT * FROM festivals WHERE name = ? AND user_id = ?", name, session["user_id"])
+    if len(rows) == 1:
+        return apology("Το πανηγύρι υπάρχει ήδη!", 400)
+
+    db.execute("INSERT INTO festivals (user_id, name, location, date) VALUES (?, ?, ?, ?)",
+               session["user_id"], name, location, date)
+
+    return redirect("/")
+
+
+@app.route("/delete", methods=["POST"])
+@login_required
+def delete():
+    """Delete a festival."""
+
+    name = request.form.get("name")
+
+    # If name empty
+    if not name:
+        return apology("Πρέπει να συμπληρώσεις το όνομα!")
+
+    # If name doesn't exist
+    rows = db.execute(
+        "SELECT * FROM festivals WHERE name = ? AND user_id = ?", name, session["user_id"])
+    if len(rows) == 0:
+        return apology("Το πανηγύρι δεν υπάρχει!")
+
+    db.execute("DELETE FROM festivals WHERE name = ? AND user_id = ?", name, session["user_id"])
+
+    return redirect("/")
+
+
+@ app.route("/header")
 def header():
     return render_template("header.html")
 
 
-@app.route("/login", methods=["GET", "POST"])
+@ app.route("/login", methods=["GET", "POST"])
 def login():
     """Login user."""
 
@@ -105,7 +135,7 @@ def login():
         return render_template("login.html")
 
 
-@app.route("/logout")
+@ app.route("/logout")
 def logout():
     """Log user out."""
 
@@ -116,7 +146,7 @@ def logout():
     return redirect("/")
 
 
-@app.route("/register", methods=["GET", "POST"])
+@ app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user."""
 

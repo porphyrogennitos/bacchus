@@ -1,5 +1,7 @@
 # Bacchus
 
+#### [YouTube Video](https://youtu.be/PXDWDRF6Kq0)
+
 Was another name for Dionysus; the Ancient Greek god of wine and festivity. 
 
 This web application lets you add and delete the festivals you've visited in Greece.
@@ -31,6 +33,3 @@ Finally, there's a link on left where you can log out.
 * Make it in English
 * Show a front-end error message in register or login explaining what went wrong
 * More functionality
-
-
-

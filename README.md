@@ -112,9 +112,3 @@ All the libraries and frameworks that were used in my virtual environment.
 * Make it in English
 * Show a front-end error message in register or login explaining what went wrong
 * More functionality like edit the festival you've been or sort the festivals by name, etc.
-
-## Things to improve
-
-* Make it in English
-* Show a front-end error message in register or login explaining what went wrong
-* More functionality

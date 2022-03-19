@@ -1,5 +1,3 @@
-#  Byte-compiled / optimized / DLL files
 __pyrache__/
-
-# Environments
 .venv
+.vscode/
